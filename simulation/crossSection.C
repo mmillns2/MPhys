@@ -1,4 +1,6 @@
 #include"fourVector.h"
+#include"timer.h"
+#include"threadPool.h"
 
 #include<memory>
 #include<cmath>
@@ -6,12 +8,14 @@
 #include<array>
 #include<optional>
 #include<limits>
+#include<fstream>
+#include<iomanip>
 
 
 class Event
 {
 public:
-	enum Constant
+	enum class Constant
 	{
 		pi,
 		muonMass,						// GeV
@@ -37,15 +41,15 @@ public:
 			m_p1{ std::move(p1) },
 			m_p2{ std::move(p2) },
 			m_p3{ std::move(p3) },
-			m_ma{ ma / (Constant::c*Constant::c) }, 
-			m_mb{ mb / (Constant::c*Constant::c) },
-			m_m1{ m1 / (Constant::c*Constant::c) },
-			m_m2{ m2 / (Constant::c*Constant::c) },
-			m_m3{ m3 / (Constant::c*Constant::c) },
+			m_ma{ ma }, 
+			m_mb{ mb },
+			m_m1{ m1 },
+			m_m2{ m2 },
+			m_m3{ m3 },
 			m_s{ s },
 			m_ampSquared{ ampSquaredPtr },
 			m_crossSection{ std::numeric_limits<double>::min() },           // -inf => not been calculated
-			m_beamEnergy{ std::sqrt(s - (ma*ma)) }
+			m_beamEnergy{ std::sqrt(s) - ma }
 	{ }
 
 	Event(int id, double ma, double mb, double m1, double m2, double m3, double s, double (*ampSquaredPtr)(double, double,
@@ -54,15 +58,15 @@ public:
 			m_p1{ nullptr },
 			m_p2{ nullptr },
 			m_p3{ nullptr },
-			m_ma{ ma / (Constant::c*Constant::c) }, 
-			m_mb{ mb / (Constant::c*Constant::c) },
-			m_m1{ m1 / (Constant::c*Constant::c) },
-			m_m2{ m2 / (Constant::c*Constant::c) },
-			m_m3{ m3 / (Constant::c*Constant::c) },
+			m_ma{ ma }, 
+			m_mb{ mb },
+			m_m1{ m1 },
+			m_m2{ m2 },
+			m_m3{ m3 },
 			m_s{ s },
 			m_ampSquared{ ampSquaredPtr },
 			m_crossSection{ std::numeric_limits<double>::min() },           // -inf => not been calculated
-			m_beamEnergy{ std::sqrt(s - (ma*ma)) }
+			m_beamEnergy{ std::sqrt(s) - Ep() }
 	{ }
 
 	Event(const Event& e)
@@ -106,11 +110,11 @@ private:
 	double m_crossSection;
 	double m_beamEnergy;
 
-private:
+public:
 	double fluxFactor() const;
 	double simpsonCalc1D(double a, double b, int n, double (*func)(double)) const;
 	double kallen(double x, double y, double z) const;
-	double m12Calc(double s, double m3, double E3) const;
+	double m12Calc(double E3) const;
 	double integrand(double E3, double theta, double thetaStar, double phiStar) const; 
 	double E3Max() const;
 	void weightModify(int& weight, int i, int n) const;
@@ -129,9 +133,9 @@ private:
 };
 
 
-double Event::getConst(Constant c)
+double Event::getConst(Constant c) 
 {
-	static constexpr std::array<double, static_cast<size_t>(Constant::max_constant)> constants{3.14159265359, 0.1134289259e-3,
+	static constexpr std::array<double, static_cast<size_t>(Constant::max_constant)> constants{3.14159265359, 0.1056583755,
 																																	0.51099895000e-3, 938.27208943e-3, 939.57e-3, 493.677e-3,
 																																	497.611e-3, 1.16639e-5, 92.4e-3, 0.22, 299792458}; 
 	return constants[static_cast<size_t>(c)];
@@ -143,18 +147,20 @@ double Event::kallen(double x, double y, double z) const
 				 - 2*std::pow(x, 2)*std::pow(z, 2) - 2*std::pow(y, 2)*std::pow(z, 2)); 	
 }
 
-double Event::m12Calc(double s, double m3, double E3) const
+double Event::m12Calc(double E3) const
 {
-	return s + std::pow(m3, 2) - 2*(std::sqrt(s))*E3; 	
+	return std::sqrt(m_s + std::pow(m_m3, 2) - 2*(std::sqrt(m_s))*E3); 	
 }
 
 double Event::integrand(double E3, double theta, double thetaStar, double phiStar) const
 {
-	double m12{ m12Calc(m_s, m_m3, E3) };
-	double phaseSpaceFactor{ kallen(m12, m_m1, m_m2) / (m_m1 * m_m2) };
+	//std::cout<<"E3: "<<E3<<'\n';
+	double m12{ m12Calc(E3) };
+	double phaseSpaceFactor{ kallen(m12, m_m1, m_m2) / (m12*m12) };
 	//std::cout<<"m12: "<<m12<<", phase space factor: "<<phaseSpaceFactor<<'\n';
 	//std::cout<<"matrix element: "<<ampSquared(theta, thetaStar, phiStar)<<'\n';
-	return std::sqrt(std::pow(E3, 2) - std::pow(m_m3, 2)) * phaseSpaceFactor * ampSquared(theta, thetaStar, phiStar);
+	return std::sqrt(std::pow(E3, 2) - std::pow(m_m3, 2)) * phaseSpaceFactor * ampSquared(theta, thetaStar, phiStar) * 
+				 std::sin(theta) * std::sin(thetaStar);
 }
 
 double Event::fluxFactor() const
@@ -167,7 +173,9 @@ double Event::fluxFactor() const
 double Event::E3Max() const
 {
 	double q3Max{ kallen(std::sqrt(m_s), m_m1 + m_m2, m_m3) / (2*std::sqrt(m_s)) };
+	//std::cout<<"q3 max: "<<q3Max<<'\n';
 	return std::sqrt(std::pow(q3Max, 2) + std::pow(m_m3, 2));
+	//return std::sqrt(m_s) - Ep() + m_m3;
 }
 
 double Event::simpsonCalc1D(double a, double b, int n, double (*func)(double)) const
@@ -229,31 +237,16 @@ double Event::simpsonCalc4D(double a, double b, double c, double d, double e, do
 				double wz{ static_cast<double>((k == 0 || k == p) ? 1 : (k % 3 == 0 ? 2 : 3)) };
 				for(size_t l{0}; static_cast<int>(l) < q; l++)
 				{
-					//double x{ a + static_cast<double>(i)*hx };
-					//double y{ c + static_cast<double>(j)*hy };
-					//double z{ e + static_cast<double>(k)*hz };
-
 					double w{ g + static_cast<double>(l)*hw };
 					double ww{ static_cast<double>((l == 0 || l == q) ? 1 : (l % 3 == 0 ? 2 : 3)) };
 					
 					integral += wx * wy * wz * ww * integrand(x, y, z, w);
-
-					/*
-					int weight{ 1 };
-					weightModify(weight, static_cast<int>(i), n);
-					weightModify(weight, static_cast<int>(j), m);
-					weightModify(weight, static_cast<int>(k), p);
-					weightModify(weight, static_cast<int>(l), q);
-					*/
-
-					//integral += weight * integrand(x, y, z, w);
-					//std::cout<<"weight: "<<weight<<", Integrand: "<<integrand(x, y, z, w)<<'\n';
 				}
 			}
 		}
 	}
 
-	integral *= (3.0*hx/8.0) * (3.0*hy/8.0) * (3.0*hz/8.0) * (3.0*hw/8.0);
+	integral *= std::pow((3.0/8.0), 4) * hx * hy * hz * hw;
 	//std::cout<<"Integral: "<<integral<<'\n';
 	return integral;
 }
@@ -269,8 +262,12 @@ double Event::crossSectionCalc(int n, int m)
 	double phiStar_max{ 2*getConst(Constant::pi) };
 	double phiStar_min{ 0 };
 
+	//std::cout<<"E3 max: "<<E3_max<<", E3 min: "<<E3_min<<'\n';	
+
 	double ret{ simpsonCalc4D(E3_min, E3_max, theta_min, theta_max, thetaStar_min, thetaStar_max, phiStar_min, phiStar_max, 
 							n, m, m, m) };
+
+	ret *= fluxFactor();
 
 	m_crossSection = ret;
 	return ret;
@@ -282,8 +279,13 @@ void Event::serializeEvent(std::string& out) const
 	out.append(std::to_string(m_beamEnergy));
 	out.append(" ");
 
-	if(getCrossSection())
-		out.append(std::to_string(m_crossSection));
+	if(auto cs = getCrossSection())
+	{
+		std::ostringstream stream;
+		double temp{ *cs * 3.894e-27 };	// cm^2
+		stream<<std::scientific<<std::setprecision(10)<<temp;
+		out.append(stream.str());
+	}
 	
 	else
 		out.append("error");
@@ -293,51 +295,57 @@ void Event::serializeEvent(std::string& out) const
 
 double Event::Ep() const
 {
+	//std::cout<<"ma: "<<m_ma<<'\n';
+	//std::cout<<"Ep: "<< (m_s + m_ma*m_ma) / (2*std::sqrt(m_s))<<'\n';
 	return (m_s + m_ma*m_ma) / (2*std::sqrt(m_s));
 }
 
 double Event::cosAlpha(double theta, double thetaStar, double phiStar) const
 {
-	return 0.5*(std::cos(phiStar) + (std::cos(phiStar) + 1)*std::cos(theta + thetaStar + Constant::pi) - 1);
+	//return 0.5*(std::cos(phiStar) + (std::cos(phiStar) + 1)*std::cos(theta + thetaStar + getConst(Constant::pi)) - 1);
+	return std::cos(phiStar); 
+	//return std::cos(getConst(Constant::pi) - theta - thetaStar);
 }
 
 double Event::qSquared(double theta, double thetaStar, double phiStar) const
 {
 	double EpSqrd{ Ep()*Ep() };
 	double mNSqrd{ m_ma*m_ma };
-	double kSqrd{ kallen(m_ma, m_m2, m_m3)*kallen(m_ma, m_m2, m_m3) };
+	double mNPrimeSqrd{ m_m1*m_m1 };
 	double cosA{ cosAlpha(theta, thetaStar, phiStar) };
-	return mNSqrd + kSqrd - 2*(std::sqrt(EpSqrd - mNSqrd) - std::sqrt(EpSqrd - kSqrd)*cosA + EpSqrd);
+	double ret{ mNSqrd + mNPrimeSqrd - 2*(-std::sqrt(EpSqrd - mNSqrd) * std::sqrt(EpSqrd - mNPrimeSqrd)*cosA + EpSqrd) };
+	//std::cout<<"q sqrd: "<<ret<<'\n';
+	return ret;
 }
 
 double Event::pk() const
 {
-	return 0.5*(m_s - m_mb*m_mb - m_ma*m_ma) / (Constant::c*Constant::c);
+	return 0.5*(m_s - m_mb*m_mb - m_ma*m_ma);
 }
 
 double Event::ppPrime(double theta, double thetaStar, double phiStar) const
 {
-	return 0.5*(-qSquared(theta, thetaStar, phiStar) + 2*m_ma*m_ma) / (Constant::c*Constant::c);
+	return 0.5*(-qSquared(theta, thetaStar, phiStar) + 2*m_ma*m_ma);
 }
 
 double Event::pkPrime(double theta, double thetaStar, double phiStar) const
 {
-	return 0.5*(m_s + qSquared(theta, thetaStar, phiStar) - m_ma*m_ma - m_mb*m_mb) / (Constant::c*Constant::c);
+	return 0.5*(m_s + qSquared(theta, thetaStar, phiStar) - m_ma*m_ma - m_mb*m_mb);
 }
 
 double Event::pPrimekPrime() const
 {
-	return 0.5*(m_s - m_ma*m_ma - m_mb*m_mb) / (Constant::c*Constant::c);
+	return 0.5*(m_s - m_ma*m_ma - m_mb*m_mb);
 }
 
 double Event::kkPrime(double theta, double thetaStar, double phiStar) const
 {
-	return 0.5*(-qSquared(theta, thetaStar, phiStar) + 2*m_mb*m_mb) / (Constant::c*Constant::c);
+	return 0.5*(-qSquared(theta, thetaStar, phiStar) + 2*m_mb*m_mb);
 }
 
 double Event::pPrimek(double theta, double thetaStar, double phiStar) const
 {
-	return 0.5*(m_s + qSquared(theta, thetaStar, phiStar) - m_ma*m_ma - m_mb*m_mb) / (Constant::c*Constant::c);
+	return 0.5*(m_s + qSquared(theta, thetaStar, phiStar) - m_ma*m_ma - m_mb*m_mb);
 }
 
 double Event::ampSquared(double theta, double thetaStar, double phiStar) const
@@ -348,6 +356,7 @@ double Event::ampSquared(double theta, double thetaStar, double phiStar) const
 	double d{ pPrimekPrime() };
 	double e{ kkPrime(theta, thetaStar, phiStar) };
 	double f{ pPrimek(theta, thetaStar, phiStar) };
+	//std::cout<<"p'k: "<<f<<'\n';
 	//std::cout<<a<<", "<<b<<", "<<c<<", "<<d<<", "<<e<<", "<<f<<'\n';
 	if(m_ampSquared)
 	{
@@ -365,10 +374,9 @@ namespace mat
 	{
 		constexpr double D{ 0.804 };
 		constexpr double F{ 0.463 };
-		constexpr double GF{ 1.16639e-5 };
-		constexpr double fPi{ 92.4e-3 };
-		constexpr double Vus{ 0.22 };
-		constexpr double c{ 299792458 };
+		double GF{ Event::getConst(Event::Constant::GF) };
+		double fPi{ Event::getConst(Event::Constant::fpi) };
+		double Vus{ Event::getConst(Event::Constant::Vus) };
 	}
 	
 	//      a   b    c    d     e    f
@@ -378,48 +386,22 @@ namespace mat
 	{
 		constexpr double ACT{ 1 };
 		constexpr double BCT{ con::D - con::F };
-		double m1{ Event::getConst(Event::neutronMass) / (con::c*con::c) };		// neutron -> neutron
-	  double m2{ Event::getConst(Event::protonMass) / (con::c*con::c) };
-		//std::cout<<ACT<<", "<<BCT<<", "<<m1<<", "<<m2<<'\n';
-		//std::cout<<con::GF*con::GF<<", "<<con::fPi*con::fPi<<", "<<con::Vus*con::Vus<<'\n';
-		//std::cout<<1/((con::fPi)*(con::fPi))<<", ";
+		double m1{ Event::getConst(Event::Constant::neutronMass) };		// neutron -> neutron
+	  double m2{ Event::getConst(Event::Constant::protonMass) };
 		double front{ 0.0625 * (con::GF)*(con::GF) * ACT*ACT * (con::Vus)*(con::Vus) * (1/((con::fPi)*(con::fPi))) };
-		//std::cout<<"front: "<<front<<'\n';
 		return front * ( 64*(a*d + f*c) + 64*BCT*(a*d + c*f + b*e - 3*(e*(b + m1*m2))) );
 	}
 }
 
 void crossSection()
 {
-	auto makeVector = [](double E, double px, double py, double pz)
-	{
-		FourVector v{E, px, py, pz};
-		return make_unique<FourVector>(v);
-	};
+	Timer t;
 
 	int id{ 0 };
-
-	auto makeEvent = [&makeVector, &id](double E1, double px1, double py1, double pz1, 
-																			double E2, double px2, double py2, double pz2,
-																			double E3, double px3, double py3, double pz3,
-																			double ma, double mb, double m1, double m2, double m3, double s,
-																			double (*ampSquared)(double, double, double, double, double, double))
-	{
-		Event e{id,
-						makeVector(E1, px1, py1, pz1),
-						makeVector(E2, px2, py2, pz2),
-						makeVector(E3, px3, py3, pz3),
-						ma, mb, m1, m2, m3, s, ampSquared};
-
-		id++;
-		return e;
-	};
-
 	auto makeEvent2 = [&id](double ma, double mb, double m1, double m2, double m3, double s, 
 													double (*ampSquared)(double, double, double, double, double, double))
 	{
-
-		Event e{id, ma, mb, m1, m2, m3, s, ampSquared};
+		Event e{ id, ma, mb, m1, m2, m3, s, ampSquared };
 		id++;
 		return e;
 	};
@@ -427,42 +409,67 @@ void crossSection()
 //--------------------------------------------------------------------------------------------------------------------------//		
 	// CT electron neutrino	+ neutron -> proton + electron, s = 3.25GeV^2	
 	double (*func)(double, double, double, double, double, double);
-	func = mat::contactTerm;
+	func = mat::contactTerm;	
 	/*
-	Event e = makeEvent2(Event::getConst(Event::neutronMass), 0, Event::getConst(Event::protonMass), 
-											 Event::getConst(Event::electronMass), Event::getConst(Event::kaon0Mass), 3.25, func);
-	//std::cout<<"Cross Section: "<<e.crossSectionCalc(100, 20)<<'\n';
-	e.crossSectionCalc(100, 20);
-	if(auto cs = e.getCrossSection())
-	{
-		std::cout<<"Cross Section: "<<*cs<<", Beam Energy: "<<e.getBeamEnergy()<<'\n';
-	}
+	// single event
+	Event e = makeEvent2(0.9395654, 0, 0.938272, 
+											 0.10566, 0.4947648, 10.7, func);
+	e.crossSectionCalc(1000, 20);
+	std::string data;
+	e.serializeEvent(data);
+	std::cout<<data<<'\n';
 	*/
-	double sMin{ 0.9 };
-	double sMax{ 4.88 };
+	// elecron: 2.066953
+	constexpr double sMin{ 2.38085 };  //(Event::getConst(Event::neutronMass))*(Event::getConst(Event::neutronMass)) };
+	constexpr double sMax{ 16 };
 	constexpr size_t N{ 50 };
-	double step{ (sMax - sMin) / N };
+	constexpr double step{ (sMax - sMin) / N };
 	std::array<double, N> crossSections;
 	std::array<double, N> beamEnergies;
 	std::string data;
-	for(size_t i{ 0 }; i < N; i++)
 	{
-		double s{ sMin + i*step };
-		Event e = makeEvent2(Event::getConst(Event::neutronMass), 0, Event::getConst(Event::protonMass), 
-											 Event::getConst(Event::electronMass), Event::getConst(Event::kaon0Mass), s, func);
-		//std::cout<<"made event\n";
-		e.crossSectionCalc(100, 20);
-		if(auto cs = e.getCrossSection())
+		ThreadPool pool{ 50 };
+		std::mutex updateDataMutex;
+		for(size_t i{ 0 }; i < N; i++)
 		{
-			//std::cout<<"here\n";
-			//crossSections[i] = *cs;
-			beamEnergies[i] = e.getBeamEnergy();
-			e.serializeEvent(data);
-		}		
+			double s{ sMin + i*step };
+			pool.enqueue([&, i, s]()
+			{
+				Event e = makeEvent2(0.9395654, 0, 0.938272, 
+												 		 0.10566, 0.4947648, s, func);
+				//std::cout<<"made event\n";
+				e.crossSectionCalc(100, 100);
+				if(auto cs = e.getCrossSection())
+				{
+					std::lock_guard<std::mutex> lock(updateDataMutex);
+					crossSections[i] = *cs;
+					beamEnergies[i] = e.getBeamEnergy();
+					e.serializeEvent(data);
+				}
+			});
+		}
 	}
 	
+	std::cout<<data<<'\n';
+	std::cout<<"here\n";
+	//for(size_t i{ 0 }; i < N; i++)
+	//{
+	//	std::cout<<beamEnergies[i]<<" "<<crossSections[i]<<'\n';
+	//}
+	
+	std::ofstream outFile("CT.txt");
+	if(outFile)
+	{
+		outFile<<std::scientific<<data;
+		outFile.close();
+		std::cout<<"Data written successfully\n";
+	}
+	else
+	{
+		std::cerr<<"Error opening file for writing\n";
+	}
 
-
-	//std::cout<<data.size();
-	//std::cout<<data<<'\n';
+	std::cout<<"Time elapsed: "<<t.elapsed()<<'\n';
+	
+//---------------------------------------------------------------------------------------------------------------------------	
 }
