@@ -31,6 +31,8 @@ std::vector<std::vector<double>> readDataFromTxt(const std::string& filename)
 		std::string csStr;
 		iss>>energyStr;
 		iss>>csStr;
+		if(csStr == "nan" || csStr == "-nan")
+			continue;
 		double energy{ std::stod(energyStr) };
 		double cs{ std::stod(csStr) };
 		std::vector<double> row{ energy, cs };
@@ -49,7 +51,7 @@ std::vector<std::vector<double>> readDataFromTxt(const std::string& filename)
 void plot()
 {
   // Import data from txt file (whitespace delimiter)
-  std::string filename{ "CT.txt" };
+  std::string filename{ "CTE3.txt" };
   std::vector<std::vector<double>> data{ readDataFromTxt(filename) };
 	const size_t n{ data.size() };
 
@@ -73,15 +75,16 @@ void plot()
   TGraphErrors *graph = new TGraphErrors(n, energyVals, csVals, nullptr, nullptr);
 
   //  Change how the plot looks
-  graph->SetTitle("CT neutron -> proton");
+  graph->SetTitle("CT neutron -> proton diff E3 s = 3.5");
   graph->SetMarkerColor(kBlue);
   graph->SetMarkerStyle(kOpenCircle);
 	graph->SetLineColor(kBlue);
-	graph->GetXaxis()->SetRangeUser(0.5, 2.5);
+	//graph->GetXaxis()->SetRangeUser(0.5, 2.5);
+	//graph->GetYaxis()->SetRangeUser(0, 2.5e-41);
  
   //  Plot the graph
   graph->DrawClone("APE");
  
   c1->Update();
-  c1->Print("CTPlot.png");
+  c1->Print("CTE3Plot.png");
 }
