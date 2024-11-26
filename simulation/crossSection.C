@@ -1,6 +1,6 @@
 #include"fourVector.h"
-#include"timer.h"
-#include"threadPool.h"
+#include"crossSection/timer.h"
+#include"crossSection/threadPool.h"
 
 #include<memory>
 #include<cmath>
@@ -649,9 +649,9 @@ namespace mat
 
 	double contactTerm(double a, double b, double c, double d, double e, double f)
 	{
-		constexpr double ACT{ 1 };
-		constexpr double BCT{ -con::D - con::F };
-		double m1{ Event::getConst(Event::Constant::neutronMass) };		// neutron -> proton
+		constexpr double ACT{ 2 };
+		constexpr double BCT{/* con::D*/ - con::F };
+		double m1{ Event::getConst(Event::Constant::protonMass) };		// neutron -> proton
 	  double m2{ Event::getConst(Event::Constant::protonMass) };
 		double front{ 0.0625 * (con::GF)*(con::GF) * ACT*ACT * (con::Vus)*(con::Vus) * (1/((con::fPi)*(con::fPi))) };
 		return front * ( 64*(a*d + f*c) + 64*BCT*(a*d + c*f + b*e - (3*(e*(b + m1*m2)))) );
@@ -680,10 +680,11 @@ void crossSection()
 	// CT electron neutrino	+ neutron -> proton + muon	
 	double (*func)(double, double, double, double, double, double);
 	func = mat::contactTerm;	
-	Event event{ 0, Event::getConst(Event::Constant::neutronMass), 0, Event::getConst(Event::Constant::protonMass),
-					 Event::getConst(Event::Constant::muonMass), Event::getConst(Event::Constant::kaon0Mass), 3.5, func };
+	Event event{ 0, Event::getConst(Event::Constant::protonMass), 0, Event::getConst(Event::Constant::protonMass),
+					 Event::getConst(Event::Constant::muonMass), Event::getConst(Event::Constant::kaonChargedMass), 3.5, func };
 
 	// differential cross section 
+	/*
 	double diffMin{ event.E3Min() };  //(Event::getConst(Event::neutronMass))*(Event::getConst(Event::neutronMass)) };
 	double diffMax{ event.E3Max() };
 	constexpr size_t diffN{ 20 };
@@ -707,9 +708,9 @@ void crossSection()
 	event.serialize(diffCrossSections, fixedParameters, diffData);
 	std::cout<<diffData<<'\n';
 	write("CTE3.txt", diffData);
-
+	*/
 	// cross sections
-	/*
+	
 	// elecron: 2.066953, muon: 2.38085
 	constexpr double sMin{ 2.25 };  //(Event::getConst(Event::neutronMass))*(Event::getConst(Event::neutronMass)) };
 	constexpr double sMax{ 5.0 };
@@ -726,7 +727,7 @@ void crossSection()
 			{
 				Event e{ event };
 				e.setS(s);
-				e.crossSectionCalc(20, 20);
+				e.crossSectionCalc(60, 60);
 				if(auto cs = e.getCrossSection())
 					crossSections[i] = *cs * 3.89739e-28; // cm^2
 				else
@@ -738,8 +739,8 @@ void crossSection()
 	std::string data;
 	event.serialize(crossSections, beamEnergies, data);
 	std::cout<<data<<'\n';
-	write("CT.txt", data);	
-	*/
+	write("CTPP.txt", data);	
+	
 	std::cout<<"Time elapsed: "<<t.elapsed()<<'\n';
 	
 //---------------------------------------------------------------------------------------------------------------------------	
