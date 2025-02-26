@@ -1,0 +1,803 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     24354,        793]
+NotebookOptionsPosition[     22974,        765]
+NotebookOutlinePosition[     23371,        781]
+CellTagsIndexPosition[     23328,        778]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"<<", " ", "FeynCalc"}], "\[IndentingNewLine]", 
+ RowBox[{"expr", "=", 
+  RowBox[{
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{
+     RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"GA", "[", "5", "]"}]}], ")"}], ".", 
+     RowBox[{"GS", "[", "k", "]"}], ".", 
+     RowBox[{"GA", "[", "\[Nu]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"GA", "[", "5", "]"}]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"GS", "[", 
+        RowBox[{"k", "'"}], "]"}], "+", "Ml"}], ")"}]}], "]"}], ".", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"A", ".", "V", ".", "G"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{
+        SqrtBox["2"], "f"}], ")"}]}], ")"}], "2"], ".", 
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{
+     RowBox[{"GA", "[", "\[Rho]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"1", "+", 
+       RowBox[{"B", ".", 
+        RowBox[{"GA", "[", "5", "]"}]}]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"GS", "[", "p", "]"}], "+", "M1"}], ")"}], ".", 
+     RowBox[{"GA", "[", "\[Sigma]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"1", "+", 
+       RowBox[{"B", ".", 
+        RowBox[{"GA", "[", "5", "]"}]}]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"GS", "[", 
+        RowBox[{"p", "'"}], "]"}], "+", 
+       RowBox[{"(", "M2", ")"}]}], ")"}]}], "]"}]}]}], "\n", 
+ RowBox[{"result", "=", 
+  RowBox[{"DiracSimplify", "[", 
+   RowBox[{"Contract", "[", "expr", "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.940583939253249*^9, 3.9405840007796164`*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"085aa88d-1e3a-48b1-906b-9087d84bf2f1"],
+
+Cell[BoxData[
+ FormBox[
+  TemplateBox[{
+   "Get", "noopen", 
+    "\"Cannot open \\!\\(\\*FormBox[\\\"\\\\\\\"FeynCalc\\\\\\\"\\\", \
+TraditionalForm]\\).\"", 2, 34, 8, 19837789161571408326, "Local"},
+   "MessageTemplate"], TraditionalForm]], "Message", "MSG",
+ CellChangeTimes->{3.9405840111769657`*^9},
+ CellLabel->
+  "During evaluation of \
+In[34]:=",ExpressionUUID->"24096e3c-29ff-4d35-b4c2-e27146840a48"],
+
+Cell[BoxData[
+ FormBox["$Failed", TraditionalForm]], "Output",
+ CellChangeTimes->{3.940584011186068*^9},
+ CellLabel->"Out[34]=",ExpressionUUID->"f597a96f-5e09-456c-9e74-f7bf1f412dab"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"tr", "(", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], ".", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        FormBox[
+         SuperscriptBox[
+          OverscriptBox["\[Gamma]", "_"], 
+          FormBox["5",
+           TraditionalForm]],
+         TraditionalForm]}], ")"}], ".", 
+      RowBox[{"(", 
+       FormBox[
+        RowBox[{
+         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+         FormBox[
+          OverscriptBox[
+           FormBox["k",
+            TraditionalForm], "_"],
+          TraditionalForm]}],
+        TraditionalForm], ")"}], ".", 
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], ".", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        FormBox[
+         SuperscriptBox[
+          OverscriptBox["\[Gamma]", "_"], 
+          FormBox["5",
+           TraditionalForm]],
+         TraditionalForm]}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         RowBox[{
+          OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+          FormBox[
+           OverscriptBox[
+            FormBox[
+             SuperscriptBox["k", "\[Prime]",
+              MultilineFunction->None],
+             TraditionalForm], "_"],
+           TraditionalForm]}],
+         TraditionalForm], "+", "Ml"}], ")"}]}],
+     TraditionalForm], ")"}], ".", 
+   FractionBox[
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"A", ".", "V", ".", "G"}], ")"}], "2"], 
+    RowBox[{"2", " ", 
+     SuperscriptBox["f", "2"]}]], ".", 
+   RowBox[{"tr", "(", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["\[Rho]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"B", ".", 
+         FormBox[
+          SuperscriptBox[
+           OverscriptBox["\[Gamma]", "_"], 
+           FormBox["5",
+            TraditionalForm]],
+          TraditionalForm]}], "+", "1"}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         RowBox[{
+          OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+          FormBox[
+           OverscriptBox[
+            FormBox["p",
+             TraditionalForm], "_"],
+           TraditionalForm]}],
+         TraditionalForm], "+", "M1"}], ")"}], ".", 
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"B", ".", 
+         FormBox[
+          SuperscriptBox[
+           OverscriptBox["\[Gamma]", "_"], 
+           FormBox["5",
+            TraditionalForm]],
+          TraditionalForm]}], "+", "1"}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         RowBox[{
+          OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+          FormBox[
+           OverscriptBox[
+            FormBox[
+             SuperscriptBox["p", "\[Prime]",
+              MultilineFunction->None],
+             TraditionalForm], "_"],
+           TraditionalForm]}],
+         TraditionalForm], "+", "M2"}], ")"}]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.940584011187077*^9},
+ CellLabel->"Out[35]=",ExpressionUUID->"303b22c2-c021-450b-ae99-482db74fc6c9"],
+
+Cell[BoxData[
+ FormBox[
+  TemplateBox[{
+   "DiracTrace", "failmsg", 
+    "\"Error! DiracTrace has encountered a fatal problem and must abort the \
+computation. The problem reads: \\!\\(\\*FormBox[\\\"\\\\\\\"Not all \
+non-chiral traces were evaluated.\\\\\\\"\\\", TraditionalForm]\\)\"", 2, 36, 
+    9, 19837789161571408326, "Local", "FeynCalc`DiracTrace"},
+   "MessageTemplate2"], TraditionalForm]], "Message", "MSG",
+ CellChangeTimes->{3.940584011267242*^9},
+ CellLabel->
+  "During evaluation of \
+In[34]:=",ExpressionUUID->"38f4dd32-e10f-4143-8a4b-a06fc7182f76"],
+
+Cell[BoxData[
+ FormBox["$Aborted", TraditionalForm]], "Output",
+ CellChangeTimes->{3.940584011271393*^9},
+ CellLabel->"Out[36]=",ExpressionUUID->"e779f9f7-cb70-4c6c-88bd-d871e502f9f6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"expr1", "=", 
+  RowBox[{"DiracSimplify", "[", 
+   RowBox[{
+    RowBox[{"DiracTrace", "[", 
+     RowBox[{
+      RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{"GA", "[", "5", "]"}]}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"GA", "[", "\[Alpha]", "]"}], ".", 
+        RowBox[{"FVD", "[", 
+         RowBox[{"k", ",", "\[Alpha]"}], "]"}]}], ")"}], ".", 
+      RowBox[{"GA", "[", "\[Nu]", "]"}], ".", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{"GA", "[", "5", "]"}]}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"GA", "[", "\[Beta]", "]"}], ".", 
+          RowBox[{"FVD", "[", 
+           RowBox[{
+            RowBox[{"k", "'"}], ",", "\[Beta]"}], "]"}]}], ")"}], "+", "Ml"}],
+        ")"}]}], "]"}], ".", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"A", ".", "V", ".", "G"}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{
+         SqrtBox["2"], "f"}], ")"}]}], ")"}], "2"]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"expr2", "=", 
+  RowBox[{"DiracSimplify", "[", 
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{
+     RowBox[{"GA", "[", "\[Rho]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"1", "+", 
+       RowBox[{"B", ".", 
+        RowBox[{"GA", "[", "5", "]"}]}]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"GA", "[", "\[Epsilon]", "]"}], ".", 
+         RowBox[{"FVD", "[", 
+          RowBox[{"p", ",", "\[Epsilon]"}], "]"}]}], ")"}], "+", "M1"}], 
+      ")"}], ".", 
+     RowBox[{"GA", "[", "\[Sigma]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"1", "+", 
+       RowBox[{"B", ".", 
+        RowBox[{"GA", "[", "5", "]"}]}]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"GA", "[", "\[Eta]", "]"}], ".", 
+         RowBox[{"FVD", "[", 
+          RowBox[{
+           RowBox[{"p", "'"}], ",", "\[Eta]"}], "]"}]}], ")"}], "+", 
+       RowBox[{"(", "M2", ")"}]}], ")"}]}], "]"}], "]"}]}], "\n", 
+ RowBox[{"result1", "=", 
+  RowBox[{"DiracSimplify", "[", 
+   RowBox[{"Contract", "[", "expr1", "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"result2", " ", "=", 
+  RowBox[{"DiracSimplify", "[", 
+   RowBox[{"Contract", "[", "expr2", "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.940584052069561*^9, 3.94058408193696*^9}, {
+  3.940584210610149*^9, 3.94058422962533*^9}, {3.940584260367334*^9, 
+  3.94058443537002*^9}, {3.940584616446587*^9, 3.940584630825802*^9}},
+ CellLabel->"In[49]:=",ExpressionUUID->"bb80996b-1142-4647-a62f-dec3878610fd"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FractionBox["1", 
+     SuperscriptBox["f", "2"]], 
+    RowBox[{"8", " ", 
+     SuperscriptBox["A", "2"], " ", 
+     SuperscriptBox[
+      RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "7", ")"}], "2"], " ", 
+     SuperscriptBox["G", "2"], " ", 
+     SuperscriptBox["V", "2"], " ", 
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+      OverscriptBox[
+       FormBox["k",
+        TraditionalForm], "_"], ")"}], " ", 
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+      OverscriptBox[
+       FormBox[
+        SuperscriptBox["k", "\[Prime]",
+         MultilineFunction->None],
+        TraditionalForm], "_"], ")"}], " ", 
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]}]]}]}], "+", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     SuperscriptBox["A", "2"], " ", 
+     SuperscriptBox[
+      RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "7", ")"}], "2"], " ", 
+     SuperscriptBox["G", "2"], " ", "Ml", " ", 
+     SuperscriptBox["V", "2"], " ", 
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+      OverscriptBox[
+       FormBox["k",
+        TraditionalForm], "_"], ")"}], " ", 
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]}]]}], 
+    SuperscriptBox["f", "2"]]}], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.940584524984961*^9, {3.9405846329828672`*^9, 3.940584636685011*^9}},
+ CellLabel->"Out[49]=",ExpressionUUID->"0b7ac1e0-a369-4c62-a4e0-658118c7892b"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"4", " ", 
+    SuperscriptBox["B", "2"], " ", 
+    SuperscriptBox[
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "5", ")"}], "2"], " ", 
+    "M1", " ", "M2", " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", 
+    SuperscriptBox["B", "2"], " ", 
+    SuperscriptBox[
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "5", ")"}], "2"], " ", 
+    "M1", " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox[
+       SuperscriptBox["p", "\[Prime]",
+        MultilineFunction->None],
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", 
+    SuperscriptBox["B", "2"], " ", 
+    SuperscriptBox[
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "5", ")"}], "2"], " ", 
+    "M2", " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", 
+    SuperscriptBox["B", "2"], " ", 
+    SuperscriptBox[
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "5", ")"}], "2"], " ", 
+    
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"], ")"}], " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox[
+       SuperscriptBox["p", "\[Prime]",
+        MultilineFunction->None],
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "M1", " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox[
+       SuperscriptBox["p", "\[Prime]",
+        MultilineFunction->None],
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "M2", " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"], ")"}], " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox[
+       SuperscriptBox["p", "\[Prime]",
+        MultilineFunction->None],
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "M1", " ", "M2", " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.940584524984961*^9, {3.9405846329828672`*^9, 3.9405846367540092`*^9}},
+ CellLabel->"Out[50]=",ExpressionUUID->"591c0de2-f356-4d64-9fed-115b726ff7af"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FractionBox["1", 
+     SuperscriptBox["f", "2"]], 
+    RowBox[{"8", " ", 
+     SuperscriptBox["A", "2"], " ", 
+     SuperscriptBox[
+      RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "7", ")"}], "2"], " ", 
+     SuperscriptBox["G", "2"], " ", 
+     SuperscriptBox["V", "2"], " ", 
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+      OverscriptBox[
+       FormBox["k",
+        TraditionalForm], "_"], ")"}], " ", 
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+      OverscriptBox[
+       FormBox[
+        SuperscriptBox["k", "\[Prime]",
+         MultilineFunction->None],
+        TraditionalForm], "_"], ")"}], " ", 
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]}]]}]}], "+", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     SuperscriptBox["A", "2"], " ", 
+     SuperscriptBox[
+      RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "7", ")"}], "2"], " ", 
+     SuperscriptBox["G", "2"], " ", "Ml", " ", 
+     SuperscriptBox["V", "2"], " ", 
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+      OverscriptBox[
+       FormBox["k",
+        TraditionalForm], "_"], ")"}], " ", 
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]}]]}], 
+    SuperscriptBox["f", "2"]]}], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.940584524984961*^9, {3.9405846329828672`*^9, 3.9405846367594767`*^9}},
+ CellLabel->"Out[51]=",ExpressionUUID->"51251e4b-f00a-405b-b2f0-c8a62a1b91b6"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"4", " ", 
+    SuperscriptBox["B", "2"], " ", 
+    SuperscriptBox[
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "5", ")"}], "2"], " ", 
+    "M1", " ", "M2", " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", 
+    SuperscriptBox["B", "2"], " ", 
+    SuperscriptBox[
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "5", ")"}], "2"], " ", 
+    "M1", " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox[
+       SuperscriptBox["p", "\[Prime]",
+        MultilineFunction->None],
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", 
+    SuperscriptBox["B", "2"], " ", 
+    SuperscriptBox[
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "5", ")"}], "2"], " ", 
+    "M2", " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", 
+    SuperscriptBox["B", "2"], " ", 
+    SuperscriptBox[
+     RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", "5", ")"}], "2"], " ", 
+    
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"], ")"}], " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox[
+       SuperscriptBox["p", "\[Prime]",
+        MultilineFunction->None],
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "M1", " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox[
+       SuperscriptBox["p", "\[Prime]",
+        MultilineFunction->None],
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "M2", " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"], ")"}], " ", 
+    RowBox[{"FeynCalc`DiracTrace`Private`dWrap", "(", 
+     OverscriptBox[
+      FormBox[
+       SuperscriptBox["p", "\[Prime]",
+        MultilineFunction->None],
+       TraditionalForm], "_"], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "M1", " ", "M2", " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.940584524984961*^9, {3.9405846329828672`*^9, 3.940584636769459*^9}},
+ CellLabel->"Out[52]=",ExpressionUUID->"bd22890a-7fac-4a4c-89b4-fdba5075cf16"]
+}, Open  ]]
+},
+WindowSize->{808, 678},
+WindowMargins->{{203, Automatic}, {Automatic, 26}},
+FrontEndVersion->"13.2 for Mac OS X ARM (64-bit) (January 30, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c8e31bda-c0d5-4372-830d-f0bd1f389633"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1750, 51, 124, "Input",ExpressionUUID->"085aa88d-1e3a-48b1-906b-9087d84bf2f1"],
+Cell[2333, 75, 408, 10, 28, "Message",ExpressionUUID->"24096e3c-29ff-4d35-b4c2-e27146840a48"],
+Cell[2744, 87, 183, 3, 32, "Output",ExpressionUUID->"f597a96f-5e09-456c-9e74-f7bf1f412dab"],
+Cell[2930, 92, 3739, 131, 58, "Output",ExpressionUUID->"303b22c2-c021-450b-ae99-482db74fc6c9"],
+Cell[6672, 225, 566, 12, 46, "Message",ExpressionUUID->"38f4dd32-e10f-4143-8a4b-a06fc7182f76"],
+Cell[7241, 239, 184, 3, 32, "Output",ExpressionUUID->"e779f9f7-cb70-4c6c-88bd-d871e502f9f6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7462, 247, 2710, 77, 236, "Input",ExpressionUUID->"bb80996b-1142-4647-a62f-dec3878610fd"],
+Cell[10175, 326, 1862, 58, 125, "Output",ExpressionUUID->"0b7ac1e0-a369-4c62-a4e0-658118c7892b"],
+Cell[12040, 386, 4525, 157, 141, "Output",ExpressionUUID->"591c0de2-f356-4d64-9fed-115b726ff7af"],
+Cell[16568, 545, 1864, 58, 125, "Output",ExpressionUUID->"51251e4b-f00a-405b-b2f0-c8a62a1b91b6"],
+Cell[18435, 605, 4523, 157, 164, "Output",ExpressionUUID->"bd22890a-7fac-4a4c-89b4-fdba5075cf16"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

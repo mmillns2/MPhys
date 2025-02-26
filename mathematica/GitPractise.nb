@@ -1,0 +1,392 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15036,        384]
+NotebookOptionsPosition[     13004,        340]
+NotebookOutlinePosition[     13440,        357]
+CellTagsIndexPosition[     13397,        354]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "PacletDirectoryLoad", "[", 
+   "\"\</Users/olivergregory/Documents/4th\\ year/MPhys\\ \
+Project/MPhys_Repo/mathematica/GitLink-0.1.1\\ 2/GitLink\>\"", "]"}], 
+  "\n"}]], "Input",
+ CellChangeTimes->{{3.949562482185467*^9, 3.9495624821893177`*^9}, {
+  3.9495625357294064`*^9, 3.9495626347725267`*^9}, {3.949566266051681*^9, 
+  3.9495662684594812`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"4818096d-4557-4051-beae-1adec4ced6ea"],
+
+Cell[BoxData[
+ RowBox[{"{", "\<\"/Users/olivergregory/Documents/4th year/MPhys \
+Project/MPhys_Repo/mathematica/GitLink-0.1.1 2/GitLink\"\>", "}"}]], "Output",\
+
+ CellChangeTimes->{{3.949562553329047*^9, 3.949562596581802*^9}, 
+   3.949562637362648*^9, 3.949566272673007*^9, 3.949567200325727*^9, 
+   3.949568301005273*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"eb5e9a64-bb80-4d5a-b8f7-2fe16eda9fea"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<GitLink`\>\"", "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.9495626570362263`*^9, 3.9495626585573378`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"0809ad97-52c6-4ee3-b9eb-ffa3e9d1b7f5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$GitLibraryInformation", "\n"}]], "Input",
+ CellChangeTimes->{{3.949562688221875*^9, 3.949562688225906*^9}, {
+  3.9495671714500427`*^9, 3.9495671772257032`*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"5d48659b-cdb1-4bfc-9e7f-8b1591a78b20"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"Location\"\>", 
+    "\[Rule]", "\<\"/Users/olivergregory/Documents/4th year/MPhys \
+Project/MPhys_Repo/mathematica/GitLink-0.1.1 \
+2/GitLink/LibraryResources/MacOSX-ARM64/gitLink.dylib\"\>"}], ",", 
+   RowBox[{"\<\"Date\"\>", "\[Rule]", 
+    TemplateBox[{
+      RowBox[{"\"Wed 26 Feb 2025 12:34:30\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}], 
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2025", ",", "2", ",", "26", ",", "12", ",", "34", ",", 
+              "30.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False]}], ",", 
+   RowBox[{"\<\"VersionString\"\>", "\[Rule]", "\<\"1.9.0\"\>"}], ",", 
+   RowBox[{"\<\"VersionNumber\"\>", "\[Rule]", "1.9`"}], ",", 
+   RowBox[{"\<\"ReleaseNumber\"\>", "\[Rule]", "0"}], ",", 
+   RowBox[{"\<\"Features\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\<\"Threads\"\>", ",", "\<\"Https\"\>", ",", "\<\"Ssh\"\>"}], 
+     "}"}]}], ",", 
+   RowBox[{"\<\"MemoryMapWindowSizeLimit\"\>", "\[Rule]", "1073741824"}], ",", 
+   RowBox[{"\<\"MemoryMapTotalLimit\"\>", "\[Rule]", "8589934592"}], ",", 
+   RowBox[{"\<\"SystemConfigSearchPath\"\>", "\[Rule]", "\<\"/etc\"\>"}], ",", 
+   RowBox[{"\<\"GlobalConfigSearchPath\"\>", 
+    "\[Rule]", "\<\"/Users/olivergregory\"\>"}], ",", 
+   RowBox[{"\<\"XdgConfigSearchPath\"\>", 
+    "\[Rule]", "\<\"/Users/olivergregory/.config/git\"\>"}], ",", 
+   RowBox[{"\<\"MemoryCacheInUse\"\>", "\[Rule]", "0"}], ",", 
+   RowBox[{"\<\"MemoryCacheLimit\"\>", "\[Rule]", "268435456"}], ",", 
+   RowBox[{"\<\"DefaultTemplatePath\"\>", 
+    "\[Rule]", "\<\"/usr/share/git-core/templates\"\>"}], ",", 
+   RowBox[{"\<\"DebugBuild\"\>", "\[Rule]", "False"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.9495626903840847`*^9, 3.949566255671467*^9, 3.949566287179495*^9, {
+   3.949566839604663*^9, 3.949566845377489*^9}, {3.94956716790208*^9, 
+   3.949567172893259*^9}, 3.949567248074957*^9, 3.9495683092050257`*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"513c3bbe-5a1c-4120-bc6b-677e72ba99c4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"repo", "=", 
+  RowBox[{
+  "GitOpen", "[", 
+   "\"\</Users/olivergregory/Documents/4th\\ year/MPhys\\ \
+Project/MPhys_Repo\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{3.94956831476232*^9, 3.9495683727292967`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"0ffe208c-874c-46b1-afcc-7088ce46d3f3"],
+
+Cell[BoxData[
+ TemplateBox[{
+   RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+       RowBox[{"\"BareQ\"", "\[Rule]", "False"}], ",", 
+       RowBox[{
+        "\"GitDirectory\"", "\[Rule]", 
+         "\"/Users/olivergregory/Documents/4th year/MPhys \
+Project/MPhys_Repo/.git/\""}], ",", 
+       RowBox[{
+        "\"WorkingDirectory\"", "\[Rule]", 
+         "\"/Users/olivergregory/Documents/4th year/MPhys Project/MPhys_Repo/\
+\""}]}], "\[RightAssociation]"}]},
+  "GitRepo",
+  DisplayFunction->(TooltipBox[
+    PanelBox[
+     GridBox[{{
+        GraphicsBox[{
+          EdgeForm[
+           GrayLevel[0.5]], 
+          GrayLevel[0.5], 
+          Thickness[0.1], 
+          LineBox[{{0, 0}, {5, 0}}], 
+          LineBox[{{0, 0}, {5, -3}}], 
+          GrayLevel[0.85], 
+          DiskBox[{0, 0}, 1], 
+          DiskBox[{5, 0}, 1], 
+          RGBColor[0, 1, 0], 
+          DiskBox[{5, -3}, 1]}, ImageSize -> 15], 
+        "\"/Users/olivergregory/Documents/4th year/MPhys \
+Project/MPhys_Repo/\""}}, BaselinePosition -> {1, 2}], FrameMargins -> 5, 
+     BaselinePosition -> Baseline], 
+    "GitRepo[<|\"BareQ\" -> False, \"GitDirectory\" -> \
+\"/Users/olivergregory/Documents/4th year/MPhys Project/MPhys_Repo/.git/\", \
+\"WorkingDirectory\" -> \"/Users/olivergregory/Documents/4th year/MPhys \
+Project/MPhys_Repo/\"|>]"]& )]], "Output",
+ CellChangeTimes->{3.949568375939663*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"3ec62b2f-18e9-467b-a0da-f61229024bf3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GitLink`GitProperties", "[", "repo", "]"}]], "Input",
+ CellChangeTimes->{{3.949567442388482*^9, 3.949567450029779*^9}, {
+  3.949568383339307*^9, 3.949568384833988*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"55e9a35c-3b98-469e-88df-95c66e988395"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"HEAD\"\>", "\[Rule]", "\<\"refs/heads/matrix_elements\"\>"}], 
+   ",", 
+   RowBox[{"\<\"HeadBranch\"\>", "\[Rule]", "\<\"matrix_elements\"\>"}], ",", 
+   
+   RowBox[{"\<\"ShallowQ\"\>", "\[Rule]", "False"}], ",", 
+   RowBox[{"\<\"EmptyQ\"\>", "\[Rule]", "False"}], ",", 
+   RowBox[{"\<\"UnbornHeadQ\"\>", "\[Rule]", "False"}], ",", 
+   RowBox[{"\<\"BareQ\"\>", "\[Rule]", "False"}], ",", 
+   RowBox[{"\<\"GitDirectory\"\>", 
+    "\[Rule]", "\<\"/Users/olivergregory/Documents/4th year/MPhys \
+Project/MPhys_Repo/.git/\"\>"}], ",", 
+   RowBox[{"\<\"WorkingDirectory\"\>", 
+    "\[Rule]", "\<\"/Users/olivergregory/Documents/4th year/MPhys \
+Project/MPhys_Repo/\"\>"}], ",", 
+   RowBox[{"\<\"DetachedHeadQ\"\>", "\[Rule]", "False"}], ",", 
+   RowBox[{"\<\"Namespace\"\>", "\[Rule]", "$Failed"}], ",", 
+   RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"None\"\>"}], ",", 
+   RowBox[{"\<\"Conflicts\"\>", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"\<\"Remotes\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{"\<\"origin\"\>", "\[Rule]", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"FetchURL\"\>", 
+         "\[Rule]", "\<\"git@github.com:mmillns2/MPhys.git\"\>"}], ",", 
+        RowBox[{"\<\"PushURL\"\>", 
+         "\[Rule]", "\<\"git@github.com:mmillns2/MPhys.git\"\>"}], ",", 
+        RowBox[{"\<\"FetchRefSpecs\"\>", "\[Rule]", 
+         RowBox[{"{", "\<\"+refs/heads/*:refs/remotes/origin/*\"\>", "}"}]}], 
+        ",", 
+        RowBox[{"\<\"PushRefSpecs\"\>", "\[Rule]", 
+         RowBox[{"{", "}"}]}]}], "\[RightAssociation]"}]}], 
+     "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"LocalBranches\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\<\"main\"\>", ",", "\<\"matrix_elements\"\>"}], "}"}]}], ",", 
+   RowBox[{"\<\"RemoteBranches\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\<\"origin/HEAD\"\>", ",", "\<\"origin/fourVector\"\>", 
+      ",", "\<\"origin/main\"\>"}], "}"}]}], ",", 
+   RowBox[{"\<\"Tags\"\>", "\[Rule]", 
+    RowBox[{"{", "\<\"Mphys1\"\>", "}"}]}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.949568387114964*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"7e3fb28b-0f73-46a3-b09a-8c5d81698881"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "FeynCalc`"}]], "Input",
+ CellChangeTimes->{{3.9494777875637627`*^9, 3.949477788203492*^9}},
+ CellLabel->
+  "In[412]:=",ExpressionUUID->"dc97c13e-0a7c-4a39-aefc-2051525c756c"],
+
+Cell[BoxData[
+ FormBox[
+  StyleBox["\<\"FeynCalc is already loaded! If you are trying to reload \
+FeynCalc or load FeynArts, TARCER, PHI, FeynHelpers or any other add-on, \
+please restart the kernel.\"\>", "Text",
+   StripOnInput->False,
+   LineColor->RGBColor[1, 0, 0],
+   FrontFaceColor->RGBColor[1, 0, 0],
+   BackFaceColor->RGBColor[1, 0, 0],
+   GraphicsColor->RGBColor[1, 0, 0],
+   FontWeight->Bold,
+   FontColor->RGBColor[1, 0, 0]], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.9494777895993853`*^9, 3.949477841453878*^9, 3.949478072826065*^9, 
+   3.949478161576323*^9, 3.949478431226021*^9, {3.949485019429948*^9, 
+   3.94948503768153*^9}},
+ CellLabel->
+  "During evaluation of \
+In[412]:=",ExpressionUUID->"10b39c61-cd2b-40c7-b89c-aee467541e13"],
+
+Cell[BoxData[
+ FormBox["$Aborted", TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.949477789601041*^9, 3.949477841456245*^9, 3.949478072828539*^9, 
+   3.949478161579381*^9, 3.949478431228545*^9, {3.9494850194309807`*^9, 
+   3.949485037682836*^9}},
+ CellLabel->
+  "Out[412]=",ExpressionUUID->"80fa443b-3c11-42c0-a0db-ba5cf8195ec7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GA", "[", "\[Mu]", "]"}]], "Input",
+ CellChangeTimes->{{3.949477794568631*^9, 3.9494778284418707`*^9}, {
+  3.9494779201102*^9, 3.9494779249881477`*^9}},
+ CellLabel->
+  "In[413]:=",ExpressionUUID->"1a7643b6-05ba-4b72-ac15-b88a2d2cc808"],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["\[Gamma]", "_"], 
+   FormBox[
+    FormBox["\[Mu]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.949477823005608*^9, 3.949477841498509*^9}, 
+   3.9494779308004723`*^9, 3.949478072879889*^9, 3.949478161620179*^9, 
+   3.949478431270453*^9, {3.949485019433958*^9, 3.949485037697133*^9}},
+ CellLabel->
+  "Out[413]=",ExpressionUUID->"4975a399-26c1-46d9-b886-dba7aab2f7f4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Define", " ", "a", " ", "symbolic", " ", "momentum", " ", "function", " ",
+     "that", " ", "behaves", " ", "like", " ", "Momentum", 
+    RowBox[{"(", 
+     RowBox[{"p", ",", "a", ",", "b", ",", "c", ",", "d"}], ")"}]}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p_", ",", "a_", ",", "b_", ",", "c_", ",", "d_"}], "]"}], ":=", 
+    
+    RowBox[{
+     RowBox[{"HoldForm", "[", "Momentum", "]"}], "[", 
+     RowBox[{"p", ",", "a", ",", "b", ",", "c", ",", "d"}], "]"}]}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Define", " ", "four"}], "-", 
+     RowBox[{"momenta", " ", "using", " ", "Momentum", " ", "function"}]}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pMu", "[", 
+     RowBox[{"a_", ",", "b_", ",", "c_", ",", "d_"}], "]"}], ":=", 
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "a", ",", "b", ",", "c", ",", "d"}], "]"}]}], "\n", 
+   RowBox[{
+    RowBox[{"qMu", "[", 
+     RowBox[{"a_", ",", "b_", ",", "c_", ",", "d_"}], "]"}], ":=", 
+    RowBox[{"Momentum", "[", 
+     RowBox[{"q", ",", "a", ",", "b", ",", "c", ",", "d"}], "]"}]}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Example", " ", "expression", " ", "using", " ", "pMu", " ", "and", " ", 
+     "qMu"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"M", "=", 
+     RowBox[{
+      RowBox[{"pMu", "[", 
+       RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}], "+", 
+      RowBox[{"qMu", "[", 
+       RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}]}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Convert", " ", "to", " ", "C", " ", "code"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"CForm", "[", "M", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.9494784270866833`*^9, 3.94947842709269*^9}},
+ CellLabel->
+  "In[414]:=",ExpressionUUID->"8d1df73e-ac88-427d-80c5-a955177271e1"],
+
+Cell["Momentum(p,a,b,c,d) + Momentum(q,a,b,c,d)", "Output",
+ CellChangeTimes->{
+  3.949478431274705*^9, {3.9494850194405413`*^9, 3.9494850377005577`*^9}},
+ CellLabel->
+  "Out[418]//CForm=",ExpressionUUID->"0cf8115d-6894-460b-9f39-84cddd5253e9"]
+}, Open  ]]
+},
+WindowSize->{808, 678},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+FrontEndVersion->"13.2 for Mac OS X ARM (64-bit) (January 30, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"895ade61-6f7c-486e-b2b1-bfc6cdef380d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 466, 10, 94, "Input",ExpressionUUID->"4818096d-4557-4051-beae-1adec4ced6ea"],
+Cell[1049, 34, 401, 7, 56, "Output",ExpressionUUID->"eb5e9a64-bb80-4d5a-b8f7-2fe16eda9fea"]
+}, Open  ]],
+Cell[1465, 44, 258, 5, 52, "Input",ExpressionUUID->"0809ad97-52c6-4ee3-b9eb-ffa3e9d1b7f5"],
+Cell[CellGroupData[{
+Cell[1748, 53, 263, 4, 52, "Input",ExpressionUUID->"5d48659b-cdb1-4bfc-9e7f-8b1591a78b20"],
+Cell[2014, 59, 2207, 44, 336, "Output",ExpressionUUID->"513c3bbe-5a1c-4120-bc6b-677e72ba99c4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4258, 108, 315, 7, 30, "Input",ExpressionUUID->"0ffe208c-874c-46b1-afcc-7088ce46d3f3"],
+Cell[4576, 117, 1450, 37, 44, "Output",ExpressionUUID->"3ec62b2f-18e9-467b-a0da-f61229024bf3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6063, 159, 270, 4, 30, "Input",ExpressionUUID->"55e9a35c-3b98-469e-88df-95c66e988395"],
+Cell[6336, 165, 2277, 48, 252, "Output",ExpressionUUID->"7e3fb28b-0f73-46a3-b09a-8c5d81698881"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8650, 218, 204, 4, 30, "Input",ExpressionUUID->"dc97c13e-0a7c-4a39-aefc-2051525c756c"],
+Cell[8857, 224, 759, 18, 50, "Print",ExpressionUUID->"10b39c61-cd2b-40c7-b89c-aee467541e13"],
+Cell[9619, 244, 335, 7, 32, "Output",ExpressionUUID->"80fa443b-3c11-42c0-a0db-ba5cf8195ec7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9991, 256, 259, 5, 30, "Input",ExpressionUUID->"1a7643b6-05ba-4b72-ac15-b88a2d2cc808"],
+Cell[10253, 263, 478, 12, 32, "Output",ExpressionUUID->"4975a399-26c1-46d9-b886-dba7aab2f7f4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10768, 280, 1973, 51, 262, "Input",ExpressionUUID->"8d1df73e-ac88-427d-80c5-a955177271e1"],
+Cell[12744, 333, 244, 4, 48, "Output",ExpressionUUID->"0cf8115d-6894-460b-9f39-84cddd5253e9"]
+}, Open  ]]
+}
+]
+*)
+

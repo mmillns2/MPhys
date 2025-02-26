@@ -1,0 +1,547 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     19377,        537]
+NotebookOptionsPosition[     17499,        500]
+NotebookOutlinePosition[     17940,        517]
+CellTagsIndexPosition[     17897,        514]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"b", "=", 
+   RowBox[{"3", "/", "5"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", 
+   RowBox[{"m", "\[Element]", "Reals"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"g", "=", 
+   RowBox[{"1", "/", 
+    SqrtBox[
+     RowBox[{"1", "-", 
+      SuperscriptBox["b", "2"]}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eq1", "=", 
+   RowBox[{"F", "==", 
+    RowBox[{
+     RowBox[{"g", "*", "Q"}], "-", 
+     RowBox[{"g", "*", "b", "*", "q", "*", 
+      RowBox[{"cos", "[", "t", "]"}]}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"eq2", "=", 
+   RowBox[{
+    RowBox[{"p", "*", 
+     RowBox[{"sin", "[", "u", "]"}]}], "==", 
+    RowBox[{"q", "*", 
+     RowBox[{"sin", "[", "t", "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"eq3", "=", 
+   RowBox[{
+    RowBox[{"p", "*", 
+     RowBox[{"cos", "[", "u", "]"}]}], "==", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "g"}], "*", "b", "*", "Q"}], "+", 
+     RowBox[{"g", "*", "q", "*", 
+      RowBox[{"cos", "[", "t", "]"}]}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"eq4", "=", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["p", "2"], "+", 
+     SuperscriptBox["m", "2"]}], "==", 
+    SuperscriptBox["F", "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"eq5", "=", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["q", "2"], "+", 
+      SuperscriptBox["m", "2"]}], "==", 
+     SuperscriptBox["Q", "2"]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"finalEq", "=", 
+   RowBox[{"Eliminate", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"eq1", ",", "eq2", ",", "eq3", ",", " ", "eq4", ",", "eq5"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"F", ",", "Q", ",", "q", ",", "p"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"finalEq", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Solve", " ", "for", " ", "u", " ", "explicitly", " ", 
+    RowBox[{"(", 
+     RowBox[{"if", " ", "possible"}], ")"}]}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"redEq", "=", 
+   RowBox[{"Reduce", "[", 
+    RowBox[{
+     RowBox[{"finalEq", " ", "&&", " ", 
+      RowBox[{"t", ">", "0"}]}], ",", "u"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"redEq", ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"ContourPlot", "[", 
+  RowBox[{
+   RowBox[{"Evaluate", "[", 
+    RowBox[{
+     RowBox[{"eq2", "/.", " ", "eq1"}], "/.", " ", "eq3"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", 
+     RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", 
+     RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.942608042572925*^9, 3.942608046504593*^9}, {
+  3.942608135985835*^9, 3.942608279530527*^9}, {3.942608509565386*^9, 
+  3.9426085107745523`*^9}},
+ CellLabel->
+  "In[621]:=",ExpressionUUID->"4c8afe0e-a165-4e8d-a404-bb8bf7269d51"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", "1"}], "+", 
+     SuperscriptBox[
+      RowBox[{"cos", "[", "t", "]"}], "2"]}], ")"}], " ", 
+   SuperscriptBox[
+    RowBox[{"sin", "[", "u", "]"}], "2"]}], "\[Equal]", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", "1"}], "+", 
+     SuperscriptBox[
+      RowBox[{"cos", "[", "u", "]"}], "2"]}], ")"}], " ", 
+   SuperscriptBox[
+    RowBox[{"sin", "[", "t", "]"}], "2"]}]}]], "Output",
+ CellChangeTimes->{{3.94260825028791*^9, 3.9426082857786922`*^9}, 
+   3.942608513797967*^9},
+ CellLabel->
+  "Out[630]=",ExpressionUUID->"bfd095d2-8379-40e0-af52-ecc9bf6c9129"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Reduce", "nsmet", 
+   "\"This system cannot be solved with the methods available to Reduce.\"", 
+   2, 631, 191, 19852129171172518942, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.942608282222993*^9, 3.9426082857803183`*^9}, 
+   3.942608513813706*^9},
+ CellLabel->
+  "During evaluation of \
+In[621]:=",ExpressionUUID->"8aa2cf29-c06c-4bb5-ab1b-f80010becf0e"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ReplaceAll", "reps", 
+   "\"\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"F\\\", \\\"\[Equal]\\\", \
+RowBox[{FractionBox[RowBox[{\\\"5\\\", \\\" \\\", \\\"Q\\\"}], \\\"4\\\"], \\\
+\"-\\\", RowBox[{FractionBox[\\\"3\\\", \\\"4\\\"], \\\" \\\", \\\"q\\\", \
+\\\" \\\", RowBox[{\\\"cos\\\", \\\"[\\\", \\\"t\\\", \\\"]\\\"}]}]}]}], \
+\\\"}\\\"}]\\) is neither a list of replacement rules nor a valid dispatch \
+table, and so cannot be used for replacing.\"", 2, 633, 192, 
+   19852129171172518942, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.942608282222993*^9, 3.9426082857803183`*^9}, 
+   3.942608513876299*^9},
+ CellLabel->
+  "During evaluation of \
+In[621]:=",ExpressionUUID->"7022869c-4332-41f4-bf89-129ff24b6e63"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ReplaceAll", "reps", 
+   "\"\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"p\\\", \\\" \\\", \
+RowBox[{\\\"cos\\\", \\\"[\\\", \\\"u\\\", \\\"]\\\"}]}], \\\"\[Equal]\\\", \
+RowBox[{RowBox[{\\\"-\\\", FractionBox[RowBox[{\\\"3\\\", \\\" \\\", \
+\\\"Q\\\"}], \\\"4\\\"]}], \\\"+\\\", RowBox[{FractionBox[\\\"5\\\", \
+\\\"4\\\"], \\\" \\\", \\\"q\\\", \\\" \\\", RowBox[{\\\"cos\\\", \\\"[\\\", \
+\\\"t\\\", \\\"]\\\"}]}]}]}], \\\"}\\\"}]\\) is neither a list of replacement \
+rules nor a valid dispatch table, and so cannot be used for replacing.\"", 2, 
+   633, 193, 19852129171172518942, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.942608282222993*^9, 3.9426082857803183`*^9}, 
+   3.9426085139345407`*^9},
+ CellLabel->
+  "During evaluation of \
+In[621]:=",ExpressionUUID->"3572eb05-0dee-454d-8aba-3b1f2ebb5548"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ReplaceAll", "reps", 
+   "\"\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"F\\\", \\\"\[Equal]\\\", \
+RowBox[{FractionBox[RowBox[{\\\"5\\\", \\\" \\\", \\\"Q\\\"}], \\\"4\\\"], \\\
+\"-\\\", RowBox[{FractionBox[\\\"3\\\", \\\"4\\\"], \\\" \\\", \\\"q\\\", \
+\\\" \\\", RowBox[{\\\"cos\\\", \\\"[\\\", RowBox[{\\\"-\\\", \
+\\\"3.1411438546392803`\\\"}], \\\"]\\\"}]}]}]}], \\\"}\\\"}]\\) is neither a \
+list of replacement rules nor a valid dispatch table, and so cannot be used \
+for replacing.\"", 2, 633, 194, 19852129171172518942, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.942608282222993*^9, 3.9426082857803183`*^9}, 
+   3.942608514003748*^9},
+ CellLabel->
+  "During evaluation of \
+In[621]:=",ExpressionUUID->"f30627c6-b39b-4f41-9821-c7dd9c12d8f0"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General", "stop", 
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"ReplaceAll\\\", \
+\\\"::\\\", \\\"reps\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"", 2, 633, 195, 19852129171172518942, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.942608282222993*^9, 3.9426082857803183`*^9}, 
+   3.94260851400835*^9},
+ CellLabel->
+  "During evaluation of \
+In[621]:=",ExpressionUUID->"44f3e6dd-c3f8-419f-a724-9a130ea1874b"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}},
+  AspectRatio->1,
+  AxesLabel->{None, None},
+  AxesOrigin->{0., 0.},
+  DisplayFunction->Identity,
+  Frame->True,
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, 
+    "DefaultGraphicsInteraction" -> {
+     "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+      "Effects" -> {
+       "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+        "Droplines" -> {
+         "freeformCursorMode" -> True, 
+          "placement" -> {"x" -> "All", "y" -> "None"}}}}, "GridLinesInFront" -> 
+    True},
+  PlotRange->
+   NCache[{{-Pi, Pi}, {-Pi, Pi}}, {{-3.141592653589793, 
+    3.141592653589793}, {-3.141592653589793, 3.141592653589793}}],
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.02]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.94260825028791*^9, 3.9426082857786922`*^9}, 
+   3.9426085140301533`*^9},
+ CellLabel->
+  "Out[633]=",ExpressionUUID->"c0b34bad-77ad-45e4-881d-fffbb1056e3c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Reduce", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", 
+      SuperscriptBox[
+       RowBox[{"cos", "[", "t", "]"}], "2"]}], ")"}], " ", 
+    SuperscriptBox[
+     RowBox[{"sin", "[", "u", "]"}], "2"]}], "\[Equal]", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", 
+      SuperscriptBox[
+       RowBox[{"cos", "[", "u", "]"}], "2"]}], ")"}], " ", 
+    SuperscriptBox[
+     RowBox[{"sin", "[", "t", "]"}], "2"]}]}], "]"}]], "Input",
+ NumberMarks->False,
+ CellLabel->
+  "In[548]:=",ExpressionUUID->"1efb55aa-a174-4f73-a7cf-0a0575477688"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"sin", "[", "u", "]"}], "\[Equal]", "0"}], "&&", 
+    RowBox[{
+     RowBox[{"sin", "[", "t", "]"}], "\[Equal]", "0"}]}], ")"}], "||", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"sin", "[", "u", "]"}], "\[NotEqual]", "0"}], "&&", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"cos", "[", "t", "]"}], "\[Equal]", 
+       RowBox[{"-", 
+        FractionBox[
+         SqrtBox[
+          RowBox[{
+           RowBox[{"-", 
+            SuperscriptBox[
+             RowBox[{"sin", "[", "t", "]"}], "2"]}], "+", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"cos", "[", "u", "]"}], "2"], " ", 
+            SuperscriptBox[
+             RowBox[{"sin", "[", "t", "]"}], "2"]}], "+", 
+           SuperscriptBox[
+            RowBox[{"sin", "[", "u", "]"}], "2"]}]], 
+         RowBox[{"sin", "[", "u", "]"}]]}]}], "||", 
+      RowBox[{
+       RowBox[{"cos", "[", "t", "]"}], "\[Equal]", 
+       FractionBox[
+        SqrtBox[
+         RowBox[{
+          RowBox[{"-", 
+           SuperscriptBox[
+            RowBox[{"sin", "[", "t", "]"}], "2"]}], "+", 
+          RowBox[{
+           SuperscriptBox[
+            RowBox[{"cos", "[", "u", "]"}], "2"], " ", 
+           SuperscriptBox[
+            RowBox[{"sin", "[", "t", "]"}], "2"]}], "+", 
+          SuperscriptBox[
+           RowBox[{"sin", "[", "u", "]"}], "2"]}]], 
+        RowBox[{"sin", "[", "u", "]"}]]}]}], ")"}]}], ")"}], "||", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"sin", "[", "u", "]"}], "\[Equal]", "0"}], "&&", 
+    RowBox[{
+     RowBox[{"sin", "[", "t", "]"}], "\[NotEqual]", "0"}], "&&", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"cos", "[", "u", "]"}], "\[Equal]", 
+       RowBox[{"-", "1"}]}], "||", 
+      RowBox[{
+       RowBox[{"cos", "[", "u", "]"}], "\[Equal]", "1"}]}], ")"}]}], 
+   ")"}]}]], "Output",
+ CellChangeTimes->{3.942607957056588*^9},
+ CellLabel->
+  "Out[548]=",ExpressionUUID->"81238a32-1baf-4166-ab2b-fa3f3d917c70"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindInstance", "[", 
+  RowBox[{"%548", ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "u"}], "}"}]}], "]"}]], "Input",
+ NumberMarks->False,
+ CellLabel->
+  "In[550]:=",ExpressionUUID->"a6c8587b-3885-4f42-920d-7bee89fcce35"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "FindInstance", "nsmet", 
+   "\"The methods available to FindInstance are insufficient to find the \
+requested instances or prove they do not exist.\"", 2, 550, 173, 
+   19852129171172518942, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.942607983264822*^9},
+ CellLabel->
+  "During evaluation of \
+In[550]:=",ExpressionUUID->"fc63a8b7-7b25-4efa-a518-180f85460577"],
+
+Cell[BoxData[
+ RowBox[{"FindInstance", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"sin", "[", "u", "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"sin", "[", "t", "]"}], "\[Equal]", "0"}]}], ")"}], "||", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"sin", "[", "u", "]"}], "\[NotEqual]", "0"}], "&&", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"cos", "[", "t", "]"}], "\[Equal]", 
+         RowBox[{"-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{"-", 
+              SuperscriptBox[
+               RowBox[{"sin", "[", "t", "]"}], "2"]}], "+", 
+             RowBox[{
+              SuperscriptBox[
+               RowBox[{"cos", "[", "u", "]"}], "2"], " ", 
+              SuperscriptBox[
+               RowBox[{"sin", "[", "t", "]"}], "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"sin", "[", "u", "]"}], "2"]}]], 
+           RowBox[{"sin", "[", "u", "]"}]]}]}], "||", 
+        RowBox[{
+         RowBox[{"cos", "[", "t", "]"}], "\[Equal]", 
+         FractionBox[
+          SqrtBox[
+           RowBox[{
+            RowBox[{"-", 
+             SuperscriptBox[
+              RowBox[{"sin", "[", "t", "]"}], "2"]}], "+", 
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"cos", "[", "u", "]"}], "2"], " ", 
+             SuperscriptBox[
+              RowBox[{"sin", "[", "t", "]"}], "2"]}], "+", 
+            SuperscriptBox[
+             RowBox[{"sin", "[", "u", "]"}], "2"]}]], 
+          RowBox[{"sin", "[", "u", "]"}]]}]}], ")"}]}], ")"}], "||", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"sin", "[", "u", "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"sin", "[", "t", "]"}], "\[NotEqual]", "0"}], "&&", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"cos", "[", "u", "]"}], "\[Equal]", 
+         RowBox[{"-", "1"}]}], "||", 
+        RowBox[{
+         RowBox[{"cos", "[", "u", "]"}], "\[Equal]", "1"}]}], ")"}]}], 
+     ")"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "u"}], "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.942607983314887*^9},
+ CellLabel->
+  "Out[550]=",ExpressionUUID->"68df258d-439f-4e7b-8725-dc4fac641b76"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Out[548]", "WolframAlphaLong",
+ CellLabel->
+  "In[549]:=",ExpressionUUID->"e3b7642e-d0ae-48ef-9dc1-5dac30f7c9b8"],
+
+Cell[BoxData[
+ NamespaceBox["WolframAlphaQueryResults",
+  DynamicModuleBox[{Typeset`q$$ = "Out[548]", Typeset`opts$$ = {
+   AppearanceElements -> {
+     "Warnings", "Assumptions", "Brand", "Pods", "PodMenus", "Unsuccessful", 
+      "Sources"}, Asynchronous -> All, 
+    TimeConstraint -> {20, Automatic, Automatic, Automatic}, 
+    Method -> {
+     "Formats" -> {"cell", "minput", "msound", "dataformats"}, "Server" -> 
+      "https://api.wolframalpha.com/v1/"}}, Typeset`elements$$ = {
+   "Warnings", "Assumptions", "Brand", "Pods", "PodMenus", "Unsuccessful", 
+    "Sources"}, Typeset`asyncpods$$ = {}, Typeset`nonpods$$ = {}, 
+   Typeset`initdone$$ = FrontEnd`SuppressEvaluationHash[True], 
+   Typeset`queryinfo$$ = {
+   "success" -> "false", "error" -> 
+    "false", {"http://www.w3.org/XML/1998/namespace", "space"} -> "preserve", 
+    "numpods" -> "0", "datatypes" -> "", "timedout" -> "", "timedoutpods" -> 
+    "", "timing" -> "0.539", "parsetiming" -> "0.08", "parsetimedout" -> 
+    "false", "recalculate" -> "", "id" -> 
+    "MSP8519244i607a73ad255700001h9d266d3iab18he", "host" -> 
+    "https://www6b3.wolframalpha.com", "server" -> "14", "related" -> 
+    "https://www6b3.wolframalpha.com/api/v1/relatedQueries.jsp?id=\
+MSPa8520244i607a73ad255700003e450d54044caeg24307842769377011871", "version" -> 
+    "2.6", "inputstring" -> "Out[548]"}, Typeset`sessioninfo$$ = {
+   "TimeZone" -> 0., 
+    "Date" -> {2024, 12, 8, 0, 52, 51.214997`8.46197212686313}, "Line" -> 549,
+     "SessionID" -> 19852129171172518942}, Typeset`showpods$$ = {}, 
+   Typeset`failedpods$$ = {}, Typeset`chosen$$ = {}, Typeset`open$$ = False, 
+   Typeset`newq$$ = "Out[548]"}, 
+   DynamicBox[ToBoxes[
+     AlphaIntegration`FormatAlphaResults[
+      Dynamic[{
+       1, {}, {}, Typeset`chosen$$, Typeset`open$$, Typeset`elements$$, 
+        Typeset`q$$, Typeset`opts$$, Typeset`nonpods$$, Typeset`queryinfo$$, 
+        Typeset`sessioninfo$$, Typeset`showpods$$, Typeset`failedpods$$, 
+        Typeset`newq$$}]], StandardForm],
+    ImageSizeCache->{1373., {43., 49.}},
+    TrackedSymbols:>{Typeset`showpods$$, Typeset`failedpods$$}],
+   DynamicModuleValues:>{},
+   Initialization:>If[
+     And[
+      Not[Typeset`initdone$$ === True], 
+      Not[Typeset`initdone$$ === FrontEnd`SuppressEvaluationHash[True]]], 
+     Null; WolframAlphaClient`Private`doAsyncUpdates[
+       Hold[{}], Typeset`asyncpods$$, 
+       Dynamic[Typeset`failedpods$$]]; Typeset`asyncpods$$ = {}; 
+     Typeset`initdone$$ = FrontEnd`SuppressEvaluationHash[True]],
+   SynchronousInitialization->False],
+  BaseStyle->{Deployed -> True},
+  DeleteWithContents->True,
+  Editable->False,
+  SelectWithContents->True]], "Print", "WolframAlphaFullOutput",
+ CellChangeTimes->{
+  3.94260797123309*^9},ExpressionUUID->"d94fd1e2-6e14-40a2-a1c3-71154bdb0b52"]
+}, Open  ]]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{316, Automatic}, {Automatic, 50}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+FrontEndVersion->"13.2 for Mac OS X ARM (64-bit) (January 30, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9a207b55-fc5f-4307-93c0-e749199c1dd2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 2939, 92, 355, "Input",ExpressionUUID->"4c8afe0e-a165-4e8d-a404-bb8bf7269d51"],
+Cell[3522, 116, 655, 21, 37, "Output",ExpressionUUID->"bfd095d2-8379-40e0-af52-ecc9bf6c9129"],
+Cell[4180, 139, 417, 10, 28, "Message",ExpressionUUID->"8aa2cf29-c06c-4bb5-ab1b-f80010becf0e"],
+Cell[4600, 151, 771, 15, 39, "Message",ExpressionUUID->"7022869c-4332-41f4-bf89-129ff24b6e63"],
+Cell[5374, 168, 873, 16, 39, "Message",ExpressionUUID->"3572eb05-0dee-454d-8aba-3b1f2ebb5548"],
+Cell[6250, 186, 808, 15, 39, "Message",ExpressionUUID->"f30627c6-b39b-4f41-9821-c7dd9c12d8f0"],
+Cell[7061, 203, 509, 11, 28, "Message",ExpressionUUID->"44f3e6dd-c3f8-419f-a724-9a130ea1874b"],
+Cell[7573, 216, 1241, 35, 401, "Output",ExpressionUUID->"c0b34bad-77ad-45e4-881d-fffbb1056e3c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8851, 256, 631, 21, 33, "Input",ExpressionUUID->"1efb55aa-a174-4f73-a7cf-0a0575477688"],
+Cell[9485, 279, 2051, 63, 87, "Output",ExpressionUUID->"81238a32-1baf-4166-ab2b-fa3f3d917c70"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11573, 347, 244, 7, 30, "Input",ExpressionUUID->"a6c8587b-3885-4f42-920d-7bee89fcce35"],
+Cell[11820, 356, 421, 10, 28, "Message",ExpressionUUID->"fc63a8b7-7b25-4efa-a518-180f85460577"],
+Cell[12244, 368, 2281, 67, 93, "Output",ExpressionUUID->"68df258d-439f-4e7b-8725-dc4fac641b76"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14562, 440, 119, 2, 41, "WolframAlphaLong",ExpressionUUID->"e3b7642e-d0ae-48ef-9dc1-5dac30f7c9b8"],
+Cell[14684, 444, 2799, 53, 102, "Print",ExpressionUUID->"d94fd1e2-6e14-40a2-a1c3-71154bdb0b52"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
