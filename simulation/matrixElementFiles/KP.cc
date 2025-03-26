@@ -1,5 +1,5 @@
 // Not included GF squared factor here; have included the missing 1/4 factor
-(Power(AKP,2)*Power(GF,2)*Power(Vus,2)*((m1*ma - Pair(Momentum(p1,vects),Momentum(q1,vects)))*Pair(Momentum(q,vects),Momentum(q,vects)) + 
+(Power(AKP,2)*Power(Vus,2)*((m1*ma - Pair(Momentum(p1,vects),Momentum(q1,vects)))*Pair(Momentum(q,vects),Momentum(q,vects)) + 
        2*Pair(Momentum(p1,vects),Momentum(q2,vects))*Pair(Momentum(q,vects),Momentum(q1,vects)) + 2*m1*ma*Pair(Momentum(q,vects),Momentum(q2,vects)) - 
        2*Pair(Momentum(p1,vects),Momentum(q1,vects))*Pair(Momentum(q,vects),Momentum(q2,vects)) + 
        2*Pair(Momentum(p1,vects),Momentum(q2,vects))*Pair(Momentum(q1,vects),Momentum(q2,vects)) + 
