@@ -164,7 +164,7 @@
                     (Pair(Momentum(p2,vects),Momentum(q3,vects)) - Pair(Momentum(q3,vects),Momentum(q3,vects))) + 
                    Pair(Momentum(q2,vects),Momentum(q3,vects))*(-Pair(Momentum(p2,vects),Momentum(p2,vects)) + Pair(Momentum(q3,vects),Momentum(q3,vects)))))))/
          Power(ma,2)))/(32.*Power(fPi,2)*Power(-Power(mLambda,2) + Power(p1 - q2,2),2)) + 
-   (Power(ACRLambda,2)*Power(GF,2)*Power(Vus,2)*((-64*(D + 3*F)*(Pair(Momentum(p1,vects),Momentum(q3,vects))*Pair(Momentum(p2,vects),Momentum(q1,vects)) - 
+   (Power(ACRLambda,2)*Power(Vus,2)*((-64*(D + 3*F)*(Pair(Momentum(p1,vects),Momentum(q3,vects))*Pair(Momentum(p2,vects),Momentum(q1,vects)) - 
              Pair(Momentum(p1,vects),Momentum(p2,vects))*Pair(Momentum(q1,vects),Momentum(q3,vects)))*Power(Pair(Momentum(q2,vects),Momentum(q2,vects)),2))/3. - 
         64*mLambda*(2*m1*Power(Pair(Momentum(p1,vects),Momentum(q2,vects)),2)*Pair(Momentum(p2,vects),Momentum(q3,vects)) + 
            (ma*Pair(Momentum(p1,vects),Momentum(q3,vects))*Pair(Momentum(p2,vects),Momentum(q1,vects)) - 
