@@ -1,9 +1,7 @@
-// Not included GF squared factor here; have included the missing 1/4 factor
-(16*Power(ACT,2)*Power(Vus,2)*Pair(Momentum(p1,vects),Momentum(q3,vects))*Pair(Momentum(p2,vects),Momentum(q1,vects)))/Power(fPi,2) + 
-   (32*Power(ACT,2)*BCT*Power(Vus,2)*Pair(Momentum(p1,vects),Momentum(q3,vects))*Pair(Momentum(p2,vects),Momentum(q1,vects)))/Power(fPi,2) + 
-   (16*Power(ACT,2)*Power(BCT,2)*Power(Vus,2)*Pair(Momentum(p1,vects),Momentum(q3,vects))*Pair(Momentum(p2,vects),Momentum(q1,vects)))/Power(fPi,2) - 
-   (16*Power(ACT,2)*m1*ma*Power(Vus,2)*Pair(Momentum(p2,vects),Momentum(q3,vects)))/Power(fPi,2) + 
-   (16*Power(ACT,2)*Power(BCT,2)*m1*ma*Power(Vus,2)*Pair(Momentum(p2,vects),Momentum(q3,vects)))/Power(fPi,2) + 
-   (16*Power(ACT,2)*Power(Vus,2)*Pair(Momentum(p1,vects),Momentum(p2,vects))*Pair(Momentum(q1,vects),Momentum(q3,vects)))/Power(fPi,2) - 
-   (32*Power(ACT,2)*BCT*Power(Vus,2)*Pair(Momentum(p1,vects),Momentum(p2,vects))*Pair(Momentum(q1,vects),Momentum(q3,vects)))/Power(fPi,2) + 
-   (16*Power(ACT,2)*Power(BCT,2)*Power(Vus,2)*Pair(Momentum(p1,vects),Momentum(p2,vects))*Pair(Momentum(q1,vects),Momentum(q3,vects)))/Power(fPi,2);
+int GF{1};
+double constants{(Power(ACT,2)*Power(GF,2)*Power(Vus,2))/(4*Power(fPi,2))};
+double matrixElementBody{64*(Power(1 + BCT,2)*Pair(Momentum(s,p1,W,theta,thetaStar,phiStar),Momentum(s,q3,W,theta,thetaStar,phiStar))*
+   Pair(Momentum(s,p2,W,theta,thetaStar,phiStar),Momentum(s,q1,W,theta,thetaStar,phiStar)) + 
+  (-1 + BCT)*((1 + BCT)*m1*ma*Pair(Momentum(s,p2,W,theta,thetaStar,phiStar),Momentum(s,q3,W,theta,thetaStar,phiStar)) + 
+     (-1 + BCT)*Pair(Momentum(s,p1,W,theta,thetaStar,phiStar),Momentum(s,p2,W,theta,thetaStar,phiStar))*
+      Pair(Momentum(s,q1,W,theta,thetaStar,phiStar),Momentum(s,q3,W,theta,thetaStar,phiStar))))};
