@@ -1,0 +1,13 @@
+executable      = apptainer_run_nuwro.sh
+request_memory  = 16G
+request_cpus    = 2
+request_gpus    = 0
+request_disk    = 20G
+initialdir      = $ENV(HOME)/scripts
+output          = out/nuwro/nuwro.out
+error           = out/nuwro/nuwro.err
+log             = out/nuwro/nuwro.log
+arguments       = $(Process)
+should_transfer_files = yes
+when_to_transfer_output = ON_EXIT
+queue 1
